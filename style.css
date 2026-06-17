@@ -1,0 +1,180 @@
+/* 1. Настройки для всего экрана */
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: #ffeef2; /* Нежный пастельно-розовый цвет фона */
+    color: #4a3b40; /* Темно-серый цвет текста, чтобы глаза не уставали */
+    margin: 0;
+    padding: 20px;
+    
+    /* Эти 4 строчки магическим образом выравнивают весь сайт ровно по центру экрана */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+/* 2. Настройки для главного заголовка */
+header h1 {
+    color: #d1496a; /* Красивый малиновый цвет */
+    font-size: 2.2rem;
+    margin-bottom: 5px;
+}
+
+header p {
+    font-size: 1.1rem;
+    color: #7d6870;
+}
+
+/* 3. Настройки для центральной карточки (белого блока) */
+main {
+    background: #ffffff; /* Белый фон для контента */
+    padding: 30px;
+    border-radius: 24px; /* Красивые скругленные углы */
+    box-shadow: 0 10px 30px rgba(209, 73, 106, 0.1); /* Мягкая розовая тень */
+    max-width: 450px;
+    width: 100%; /* Чтобы блок идеально сжимался на экранах телефонов */
+    text-align: center;
+    margin: 20px 0;
+}
+
+main h2 {
+    color: #333;
+    font-size: 1.5rem;
+}
+
+/* 4. Стилизуем кнопку */
+button {
+    background-color: #d1496a; /* Малиновая кнопка */
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 50px; /* Делаем кнопку овальной */
+    cursor: pointer; /* Меняет курсор на "пальчик" при наведении */
+    box-shadow: 0 5px 15px rgba(209, 73, 106, 0.3);
+    
+    /* Плавный переход, чтобы кнопка реагировала на мышку мягко */
+    transition: all 0.3s ease; 
+}
+
+/* Что происходит, когда мы наводим мышку на кнопку */
+button:hover {
+    background-color: #b33654; /* Цвет становится чуть темнее */
+    transform: translateY(-3px); /* Кнопка приподнимается вверх на 3 пикселя */
+    box-shadow: 0 8px 20px rgba(209, 73, 106, 0.4); /* Тень становится глубже */
+}
+
+/* Что происходит, когда мы физически кликаем на кнопку */
+button:active {
+    transform: translateY(-1px); /* Кнопка слегка утапливается обратно */
+}
+
+/* 5. Подвал (футер) */
+footer p {
+    font-size: 0.9rem;
+    color: #a39298;
+}
+/* Настройки для заголовка счётчика */
+.counter-container h3 {
+    color: #7d6870;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+/* Делаем сетку, чтобы плашки встали в один ряд */
+.counter-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+/* Стиль для каждой отдельной плашки (день, час и т.д.) */
+.counter-item {
+    background-color: #fff0f3; /* Чуть розоватый фон для плашек */
+    padding: 10px;
+    border-radius: 12px;
+    flex: 1; /* Чтобы все плашки были одинаковой ширины */
+}
+
+/* Стиль для больших цифр */
+.counter-item span {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #d1496a;
+    display: block;
+}
+
+/* Стиль для подписей под цифрами */
+.counter-item p {
+    font-size: 0.75rem;
+    margin: 5px 0 0 0;
+    color: #a39298;
+    text-transform: uppercase; /* Делает буквы заглавными */
+    letter-spacing: 1px; /* Раздвигает буквы для красоты */
+}
+/* Контейнер для слайдера */
+.slider-container {
+    position: relative;
+    width: 100%;
+    max-width: 350px; /* Ограничиваем ширину, чтобы фотки не были огромными */
+    margin: 20px auto;
+    border-radius: 16px;
+    overflow: hidden; /* Прячет всё, что вылезает за пределы рамки */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Обертка для картинок */
+.slider {
+    position: relative;
+    height: 350px; /* Фиксированная высота для всех фоток */
+    background-color: #f0f0f0;
+}
+
+/* Общий стиль для ВСЕХ картинок в слайдере */
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Магия: фотка аккуратно подгоняется под размеры, не растягиваясь */
+    display: none; /* ПО УМОЛЧАНИЮ СКРЫВАЕМ ВСЕ ФОТКИ */
+}
+
+/* Показываем ТОЛЬКО ту фотку, у которой есть класс .active */
+.slide.active {
+    display: block;
+}
+
+/* Стили для стрелочек */
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%); /* Центрируем стрелочки по вертикали */
+    background: rgba(255, 255, 255, 0.7); /* Полупрозрачный белый фон */
+    color: #d1496a;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; /* Делаем стрелки круглыми */
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s;
+    padding: 0; /* Сбрасываем внутренние отступы нашей обычной кнопки */
+}
+
+.slider-btn:hover {
+    background: white; /* При наведении стрелка становится ярче */
+}
+
+/* Позиционируем левую и правую стрелки */
+#prev-btn { left: 10px; }
+#next-btn { right: 10px; }
