@@ -14,59 +14,232 @@
     </header>
 
     <main>
-        <h2>Добро пожаловать в наш альбом</h2>
-        <p>Здесь собраны наши самые прекрасные, милые и смешные моменты.</p>
-        <div class="counter-container">
-    <h3>Мы вместе уже:</h3>
-    <div class="counter-grid">
-        <div class="counter-item">
-            <span id="days">00</span>
-            <p>дней</p>
+        <div class="album-page active-page">
+            <h2>Добро пожаловать в наш альбом</h2>
+            <p>Здесь собраны наши самые крутые, милые и смешные моменты.</p>
+            
+            <div class="counter-container">
+                <h3>Мы вместе уже:</h3>
+                <div class="counter-grid">
+                    <div class="counter-item"><span id="days">00</span><p>дней</p></div>
+                    <div class="counter-item"><span id="hours">00</span><p>часов</p></div>
+                    <div class="counter-item"><span id="minutes">00</span><p>минут</p></div>
+                    <div class="counter-item"><span id="seconds">00</span><p>секунд</p></div>
+                </div>
+            </div>
+
+            <div class="slider-container">
+                <div class="slider">
+                    <img src="photo/photo1.jpg" alt="Наше фото 1" class="slide active">
+                    <img src="photo/photo2.jpg" alt="Наше фото 2" class="slide">
+                    <img src="photo/photo3.jpg" alt="Наше фото 3" class="slide">
+                    <img src="photo/photo4.jpg" alt="Наше фото 4" class="slide">
+                    <img src="photo/photo5.jpg" alt="Наше фото 5" class="slide">
+                    <img src="photo/photo6.jpg" alt="Наше фото 6" class="slide">
+                    <img src="photo/photo7.jpg" alt="Наше фото 7" class="slide">
+                    <img src="photo/photo8.jpg" alt="Наше фото 8" class="slide">
+                    <img src="photo/photo9.jpg" alt="Наше фото 9" class="slide">
+                </div>
+                <button id="prev-btn" class="slider-btn">❮</button>
+                <button id="next-btn" class="slider-btn">❯</button>
+            </div>
         </div>
-        <div class="counter-item">
-            <span id="hours">00</span>
-            <p>часов</p>
+        <!-- ... Слайд 2: Мемы ... -->
+        <div class="album-page sub-words-container">
+            <span class="bg-word word-13">Я люблю тебя!</span>
+            <span class="bg-word word-14">Я тебя обожаю!</span>
+            <span class="bg-word word-15">Ты мне нравишься!</span>
+            <span class="bg-word word-16">Я люблю тебя!</span>
+            <span class="bg-word word-17">Я тебя обожаю!</span>
+            <span class="bg-word word-18">Ты мне нравишься!</span>
+
+            <h2>Наши локальные приколы 🤪</h2>
+            <p id="meme-text" style="font-weight: bold; color: #d1496a; min-height: 40px; margin-top: 20px; font-size: 1.3rem;"></p>
+            <button id="meme-button">Нажми, чтобы вспомнить мем</button>
         </div>
-        <div class="counter-item">
-            <span id="minutes">00</span>
-            <p>минут</p>
+        <!-- СЛАЙД 3: Наша история в датах -->
+        <div class="album-page sub-words-container">
+            <span class="bg-word word-19">невероятно красивая</span>
+            <span class="bg-word word-20">прекрасная</span>
+            <span class="bg-word word-21">любимая</span>
+            <span class="bg-word word-22">весёлая</span>
+            <span class="bg-word word-23">добрая</span>
+            <span class="bg-word word-24">самая лучшая</span>
+            <span class="bg-word word-25">комфортная</span>
+            <span class="bg-word word-26">единственная</span>
+
+            <h2>Наша история в датах 📅</h2>
+            <p>Нажми на событие, чтобы вспомнить, как это было...</p>
+
+            <div class="spoilers-container">
+                <!-- Спойлер 1 -->
+                <div class="spoiler-item">
+                    <button class="spoiler-trigger">16.06.2024 — День первого общения 👋</button>
+                    <div class="spoiler-content">
+                        <p>Нравилось, что ты сразу отвечала, сразу показывала интерес к общению. Правда пару раз спрашивал какой у тебя рост и забывал😅</p>
+                        <img src="photo/date1.jpg" alt="Первое общение" class="spoiler-img">
+                    </div>
+                </div>
+
+                <!-- Спойлер 2 -->
+                <div class="spoiler-item">
+                    <button class="spoiler-trigger">06.07.2024 — Начало первая встреча 💘</button>
+                    <div class="spoiler-content">
+                        <p>На нашей первой встрече, я безумно полюбил твои красивые глаза😍</p>
+                        <img src="photo/date2.jpg" alt="Первая встреча" class="spoiler-img">
+                    </div>
+                </div>
+
+                <!-- Спойлер 3 -->
+                <div class="spoiler-item">
+                    <button class="spoiler-trigger">16.07.2024 — Начало отношений ❤️‍🔥</button>
+                    <div class="spoiler-content">
+                        <p> Момент, когда время буквально остановилось. Сердце сильно колотилось в тот момент💋</p>
+                        <img src="photo/date3.jpg" alt="Начало отношений" class="spoiler-img">
+                    </div>
+                </div>
+
+                <!-- Спойлер 4 -->
+                <div class="spoiler-item">
+                    <button class="spoiler-trigger">12.07.2025 - Первое совместное путешествие 🚈</button>
+                    <div class="spoiler-content">
+                        <p>Наша первая дальняя поездка, новые места,бесконечные разговоры и только мы вдвоём. Это незабываемо!💞</p>
+                        <img src="photo/date4.jpg" alt="Первое путешествие" class="spoiler-img">
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="counter-item">
-            <span id="seconds">00</span>
-            <p>секунд</p>
+        <!-- СЛАЙД 4: Флип-карточки  -->
+        <div class="album-page hearts-bg">
+            <h2>Маленькие секреты о тебе 🤫</h2>
+            <p>Нажимай на карточки, чтобы узнать, что там спрятано...</p>
+
+            <div class="flip-cards-container">
+                <!-- Карточка 1 -->
+                <div class="flip-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="card-icon">✨</div>
+                            <h3>Твоя суперсила...</h3>
+                        </div>
+                        <div class="card-back">
+                            <p>Умение давать мне силы, мотивацию, энергию, настрой, даже когда всё идёт наперекосяк. Ты моё любимое солнышко! ☀️</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Карточка 2 -->
+                <div class="flip-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="card-icon">🧸</div>
+                            <h3>Мой любимый твой образ...</h3>
+                        </div>
+                        <div class="card-back">
+                            <p>Все твои образы, мои любимые! Ты самая нежная и красивая на свете. 🥰</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Карточка 3 -->
+                <div class="flip-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="card-icon">😁</div>
+                            <h3>Почему я улыбаюсь...</h3>
+                        </div>
+                        <div class="card-back">
+                            <p>Из-за тебя, ты приносишь мне всегда яркие, прекрасные эмоции. Это моё чистое счастье! 💋</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Карточка 4 -->
+                <div class="flip-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="card-icon">❤️</div>
+                            <h3>Что мне в тебе нравится больше всего...</h3>
+                        </div>
+                        <div class="card-back">
+                            <p>Мне в тебе нравится абсолютно всё! Никогда не думай о себе плохо! 💗</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
-<div class="slider-container">
-    <div class="slider">
-        <img src="photo/photo1.jpg" alt="Наше фото 1" class="slide active">
-        <img src="photo/photo2.jpg" alt="Наше фото 2" class="slide">
-        <img src="photo/photo3.jpg" alt="Наше фото 3" class="slide">
-        <img src="photo/photo4.jpg" alt="Наше фото 3" class="slide">
-        <img src="photo/photo5.jpg" alt="Наше фото 3" class="slide">
-        <img src="photo/photo6.jpg" alt="Наше фото 3" class="slide">
-        <img src="photo/photo7.jpg" alt="Наше фото 3" class="slide">
-        <img src="photo/photo8.jpg" alt="Наше фото 3" class="slide">
-        <img src="photo/photo9.jpg" alt="Наше фото 3" class="slide">
-        <img src="photo/photo10.jpg" alt="Наше фото 3" class="slide">
-        <img src="photo/photo11.jpg" alt="Наше фото 3" class="slide">
-        <img src="photo/photo12.jpg" alt="Наше фото 3" class="slide">
-    </div>
-    
-    <button id="prev-btn" class="slider-btn">❮</button>
-    <button id="next-btn" class="slider-btn">❯</button>
-</div>
-        <!-- Вот сюда мы добавили строчку для будущего текста мема -->
-        <p id="meme-text" style="font-weight: bold; color: #d1496a; min-height: 40px; margin-top: 20px;"></p>
-        
-        <button id="meme-button">Нажми, чтобы вспомнить мем</button>
+        <!-- СЛАЙД 5: Уровень счастья  -->
+        <div class="album-page sub-words-container">
+            <span class="bg-word word-1">любовь</span>
+            <span class="bg-word word-2">ангелочек</span>
+            <span class="bg-word word-3">котя</span>
+            <span class="bg-word word-4">любимая</span>
+            <span class="bg-word word-5">солнышко</span>
+            <span class="bg-word word-6">будущая жена</span>
+            <span class="bg-word word-7">лучик солнца</span>
+            <span class="bg-word word-8">счастье</span>
+            <span class="bg-word word-9">зая</span>
+            <span class="bg-word word-10">малышка</span>
+            <span class="bg-word word-11">кукусичка</span>
+            <span class="bg-word word-12">лапуська</span>
+
+            <h2>Мой уровень счастья с тобой 📈</h2>
+            <p>Приложи палец к сердцу, чтобы запустить сканирование системы...</p>
+
+            <div class="scanner-container">
+                <div id="love-scanner" class="scanner-button">
+                    <span class="scanner-icon">❤️</span>
+                    <div class="scanner-line"></div> </div>
+                
+                <div id="scanner-status" class="scanner-status">Готов к замеру</div>
+                
+                <div id="scanner-result" class="scanner-result-text"></div>
+            </div>
+        </div>
+        <!-- СЛАЙД 6: Мини-Игра  -->
+        <div class="album-page sub-words-container">
+            <span class="bg-word word-27">Спасибо, что ты у меня есть</span>
+            <span class="bg-word word-28">Ты самое лучшее, что было в моей жизни</span>
+            <span class="bg-word word-29">Спасибо, что ты у меня есть</span>
+            <span class="bg-word word-30">Ты самое лучшее, что было в моей жизни</span>
+            <span class="bg-word word-31">Спасибо, что ты у меня есть</span>
+            <span class="bg-word word-32">Ты самое лучшее, что было в моей жизни</span>
+
+            <h2>Миссия: Добраться до сердца 🚀</h2>
+            <p style="font-size: 0.9rem; color: #8a7a80;">Кликай по игровому полю, чтобы лететь вверх. Не врезайся в проблемы!</p>
+
+            <div id="game-container">
+                <div id="game-box">
+                    <div id="game-player"></div>
+                    
+                    <div id="game-obstacle">Проблема</div>
+                    
+                    <div id="game-savior">
+                        <div class="savior-bubble">Я рядом! Держу! ❤️</div>
+                    </div>
+                    
+                    <div id="game-overlay">
+                        <div id="overlay-text">Помоги мне долететь до тебя</div>
+                        <button id="game-start-btn">Начать игру</button>
+                    </div>
+                </div>
+                
+                <div class="game-stats">
+                    <span id="game-score">Счёт: 0 / 5</span>
+                    <span id="game-lives">❤️❤️❤️❤️❤️</span>
+                </div>
+            </div>
+        </div>
     </main>
+
+    <div class="slides-navigation">
+        <button id="main-prev-btn">❮ Назад</button>
+        <button id="main-next-btn">Вперед ❯</button>
+    </div>
 
     <footer>
         <p>Сделано с любовью в 2026 году</p>
     </footer>
 
-    <!-- Вот сюда мы подключили JS-файл -->
     <script src="script.js"></script>
 </body>
 </html>
