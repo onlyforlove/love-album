@@ -467,3 +467,120 @@ function endGame(isWin) {
         if (startBtn) startBtn.innerText = "Попробовать заново 🔄";
     }
 }
+const introScreen = document.getElementById('intro-screen');
+const openAlbumBtn = document.getElementById('open-album-btn');
+const openingMessage = document.getElementById('opening-message');
+const albumElements = [
+    document.querySelector('header'),
+    document.querySelector('main'),
+    document.querySelector('.slides-navigation'),
+    document.querySelector('footer')
+];
+const messages = [
+    "❤️ Открываем воспоминания...",
+    "💕 Загружаем счастливые моменты...",
+    "💖 Проверяем уровень любви...",
+    "✨ Готово!"
+];
+
+openAlbumBtn.addEventListener('click', () => {
+
+    openAlbumBtn.style.display = 'none';
+
+    openingMessage.classList.add('show');
+
+    let currentMessage = 0;
+
+    openingMessage.textContent =
+        messages[currentMessage];
+
+    const interval = setInterval(() => {
+
+        currentMessage++;
+
+        if (currentMessage < messages.length) {
+
+            openingMessage.style.opacity = 0;
+
+            setTimeout(() => {
+
+                openingMessage.textContent =
+                    messages[currentMessage];
+
+                openingMessage.style.opacity = 1;
+
+            }, 250);
+
+        } else {
+
+            clearInterval(interval);
+
+            createIntroExplosion();
+
+            setTimeout(() => {
+
+                introScreen.classList.add('flash');
+
+                setTimeout(() => {
+
+                    albumElements.forEach(el => {
+                        if (el) {
+                            el.classList.add('album-visible');
+                        }
+                    });
+
+                }, 600);
+
+            }, 500);
+        }
+
+    }, 1000);
+});
+function createIntroExplosion() {
+
+    for (let i = 0; i < 200; i++) {
+
+        const heart = document.createElement('span');
+
+        heart.className = 'intro-heart';
+
+        const emojis = [
+            '❤️',
+            '💖',
+            '💕',
+            '💗',
+            '💞',
+            '✨'
+        ];
+
+        heart.textContent =
+            emojis[Math.floor(Math.random() * emojis.length)];
+
+        const angle = Math.random() * Math.PI * 2;
+        const distance = 100 + Math.random() * 600;
+
+        heart.style.left = '50%';
+        heart.style.top = '50%';
+
+        heart.style.setProperty(
+            '--x',
+            `${Math.cos(angle) * distance}px`
+        );
+
+        heart.style.setProperty(
+            '--y',
+            `${Math.sin(angle) * distance}px`
+        );
+
+        heart.style.setProperty(
+            '--r',
+            `${Math.random() * 360}deg`
+        );
+
+        introScreen.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 1500);
+    }
+}
