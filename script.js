@@ -37,6 +37,7 @@ const memes = [
     "Не, завтра😅",
     "Скажи тутулуту🤪",
     "Абсент зло😈",
+    "Более-менее🙃",
 ];
 
 // 2. Создаем "рабочую колоду", копируя элементы из основного списка
@@ -470,6 +471,7 @@ function endGame(isWin) {
 const introScreen = document.getElementById('intro-screen');
 const openAlbumBtn = document.getElementById('open-album-btn');
 const openingMessage = document.getElementById('opening-message');
+const storyStart = document.getElementById('story-start');
 const albumElements = [
     document.querySelector('header'),
     document.querySelector('main'),
@@ -482,6 +484,7 @@ const messages = [
     "💖 Проверяем уровень любви...",
     "✨ Готово!"
 ];
+
 
 openAlbumBtn.addEventListener('click', () => {
 
@@ -515,72 +518,39 @@ openAlbumBtn.addEventListener('click', () => {
 
             clearInterval(interval);
 
-            createIntroExplosion();
+            // показываем экран "Наша история"
+            storyStart.classList.add('show');
 
+            // убираем заставку
             setTimeout(() => {
+                introScreen.classList.add('hidden');
+            }, 300);
 
-                introScreen.classList.add('flash');
+            // показываем альбом
+            setTimeout(() => {
+                albumElements.forEach(el => {
+                    if (el) {
+                        el.classList.add('album-visible');
+                    }
+                });
 
-                setTimeout(() => {
+                const overlay = document.querySelector('.first-photo-overlay');
 
-                    albumElements.forEach(el => {
-                        if (el) {
-                            el.classList.add('album-visible');
-                        }
-                    });
+                if (overlay) {
+                    overlay.classList.remove('play-intro');
 
-                }, 600);
+                    void overlay.offsetWidth;
 
-            }, 500);
+                    overlay.classList.add('play-intro');
+                }
+
+            }, 700);
+
+            // убираем надпись
+            setTimeout(() => {
+                storyStart.classList.remove('show');
+            }, 1200);
         }
 
     }, 1000);
 });
-function createIntroExplosion() {
-
-    for (let i = 0; i < 200; i++) {
-
-        const heart = document.createElement('span');
-
-        heart.className = 'intro-heart';
-
-        const emojis = [
-            '❤️',
-            '💖',
-            '💕',
-            '💗',
-            '💞',
-            '✨'
-        ];
-
-        heart.textContent =
-            emojis[Math.floor(Math.random() * emojis.length)];
-
-        const angle = Math.random() * Math.PI * 2;
-        const distance = 100 + Math.random() * 600;
-
-        heart.style.left = '50%';
-        heart.style.top = '50%';
-
-        heart.style.setProperty(
-            '--x',
-            `${Math.cos(angle) * distance}px`
-        );
-
-        heart.style.setProperty(
-            '--y',
-            `${Math.sin(angle) * distance}px`
-        );
-
-        heart.style.setProperty(
-            '--r',
-            `${Math.random() * 360}deg`
-        );
-
-        introScreen.appendChild(heart);
-
-        setTimeout(() => {
-            heart.remove();
-        }, 1500);
-    }
-}

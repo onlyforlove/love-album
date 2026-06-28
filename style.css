@@ -1,12 +1,12 @@
 /* 1. Настройки для всего экрана */
 body {
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    background-color: #ffeef2; /* Нежный пастельно-розовый цвет фона */
-    color: #4a3b40; /* Темно-серый цвет текста, чтобы глаза не уставали */
+    font-family: 'Nunito', 'Segoe UI', Roboto, sans-serif;
+    background-image: linear-gradient(135deg, #ffeef2 0%, #ffd6e7 50%, #ffeef2 100%);
+    background-size: 400% 400%;
+    animation: bgShift 6s ease infinite;
+    color: #4a3b40;
     margin: 0;
     padding: 20px;
-    
-    /* Эти 4 строчки магическим образом выравнивают весь сайт ровно по центру экрана */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -17,6 +17,7 @@ body {
 
 /* 2. Настройки для главного заголовка */
 header h1 {
+    font-family: 'Playfair Display', Georgia, serif;
     color: #d1496a; /* Красивый малиновый цвет */
     font-size: 2.2rem;
     margin-bottom: 5px;
@@ -40,6 +41,7 @@ main {
 }
 
 main h2 {
+    font-family: 'Playfair Display', Georgia, serif;
     color: #333;
     font-size: 1.5rem;
 }
@@ -150,6 +152,23 @@ footer p {
     display: block;
 }
 
+/* Кинематографичное появление первой фотографии */
+
+.slide.first-slide-animation {
+    animation: firstPhotoZoom 3s ease forwards;
+}
+
+@keyframes firstPhotoZoom {
+    from {
+        transform: scale(1.12);
+        filter: brightness(0.85);
+    }
+
+    to {
+        transform: scale(1);
+        filter: brightness(1);
+    }
+}
 /* Стили для стрелочек */
 .slider-btn {
     position: absolute;
@@ -190,6 +209,12 @@ footer p {
 /* Показываем только ту страницу, у которой есть класс active-page */
 .album-page.active-page {
     display: block;
+    animation: pageSlideIn 0.8s ease both;
+}
+
+@keyframes pageSlideIn {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0);    }
 }
 
 /* Контейнер для главных кнопок Назад/Вперед внизу */
@@ -763,13 +788,11 @@ footer p {
     position: fixed;
     inset: 0;
 
-    background: linear-gradient(
-        135deg,
-        #fff0f3,
-        #ffe1e6,
-        #fff5f7
-    );
+    background-image: linear-gradient(135deg, #ffeef2 0%, #ffd6e7 50%, #ffeef2 100%);
+    background-size: 400% 400%;                                                          /* 👈 */
+    animation: bgShift 8s ease infinite;    
 
+    overflow: hidden;    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -787,6 +810,7 @@ footer p {
 }
 
 .intro-content h1 {
+    font-family: 'Playfair Display', Georgia, serif;
     font-size: 2.5rem;
     color: #d1496a;
     margin-bottom: 15px;
@@ -868,19 +892,169 @@ footer p {
 }
 /* ================= ПОЯВЛЕНИЕ АЛЬБОМА ================= */
 
-main,
+
+#story-start {
+    position: fixed;
+    inset: 0;
+
+    background-image: linear-gradient(135deg, #ffeef2 0%, #ffd6e7 50%, #ffeef2 100%);
+    background-size: 400% 400%;                                                         /* 👈 */
+    animation: bgShift 6s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 9998;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: opacity 1s ease;
+}
+
+#story-start.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+#story-start h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2rem;
+    color: #d1496a;
+
+    text-align: center;
+
+    animation: pulseText 2s infinite;
+}
+
+@keyframes pulseText {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+}
 header,
+main,
 .slides-navigation,
 footer {
     opacity: 0;
-    transform: translateY(40px);
+    transform: scale(1.08);
 
     transition:
-        opacity 1s ease,
-        transform 1s ease;
+        opacity 1.5s ease,
+        transform 1.5s ease;
 }
 
 .album-visible {
     opacity: 1 !important;
-    transform: translateY(0) !important;
+    transform: scale(1) !important;
+}
+/* Кинематографичная первая фотография */
+
+.first-photo {
+    transform: scale(1.15);
+    filter: brightness(0.7);
+
+}
+.first-photo.play-intro {
+    animation: firstPhotoCinema 3s ease forwards;
+}
+
+@keyframes firstPhotoCinema {
+
+    from {
+        transform: scale(1.08);
+        filter: brightness(0.92);
+    }
+
+    to {
+        transform: scale(1);
+        filter: brightness(1);
+    }
+}
+.first-photo-overlay {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+    text-align: center;
+
+    pointer-events: none;
+
+    opacity: 0;
+
+}
+
+.first-photo-overlay h3 {
+    font-size: 2rem;
+    margin: 0;
+
+    text-shadow:
+        0 2px 10px rgba(0,0,0,0.6);
+}
+
+.first-photo-overlay p {
+    margin-top: 10px;
+    font-size: 1rem;
+
+    text-shadow:
+        0 2px 10px rgba(0,0,0,0.6);
+}
+
+@keyframes overlayFade {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.first-photo-overlay.play-intro {
+    animation: overlayFade 2s forwards;
+    animation-delay: 0.3s;
+}
+@keyframes bgShift {
+    0%, 100% { background-position: 0% 50%; }
+    50%       { background-position: 100% 50%; }
+}
+/* Большое пульсирующее сердце */
+.intro-hero-heart {
+    font-size: 4.5rem;
+    display: block;
+    animation: heroPulse 2s ease-in-out infinite;
+    margin-bottom: 8px;
+    line-height: 1;
+}
+
+@keyframes heroPulse {
+    0%, 100% { transform: scale(1);    }
+    50%       { transform: scale(1.15); }
+}
+
+/* Плавающие сердечки на фоне */
+.intro-float-heart {
+    position: absolute;
+    bottom: -20px;
+    font-size: 1.5rem;
+    pointer-events: none;
+    animation: introFloatUp linear infinite;
+    opacity: 0;
+}
+
+@keyframes introFloatUp {
+    0%   { bottom: -20px; opacity: 0;   }
+    10%  { opacity: 0.5;                }
+    90%  { opacity: 0.3;                }
+    100% { bottom: 110vh; opacity: 0;   }
 }

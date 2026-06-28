@@ -4,11 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Наши 2 года вместе ❤️</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="intro-screen">
+        <span class="intro-float-heart" style="left:8%;  animation-duration:8s;  animation-delay:0s;">💕</span>
+        <span class="intro-float-heart" style="left:25%; animation-duration:11s; animation-delay:2s;">❤️</span>
+        <span class="intro-float-heart" style="left:55%; animation-duration:9s;  animation-delay:0.5s;">🌸</span>
+        <span class="intro-float-heart" style="left:75%; animation-duration:10s; animation-delay:1.5s;">💖</span>
+        <span class="intro-float-heart" style="left:90%; animation-duration:8s;  animation-delay:3s;">✨</span>
         <div class="intro-content">
+            <div class="intro-hero-heart">🩷</div>
             <h1>Для моей любимой ❤️</h1>
             <p>Я подготовил для тебя небольшой альбом наших воспоминаний</p>
             <button id="open-album-btn"> Открыть альбом ✨</button>
@@ -17,6 +26,9 @@
                 ❤️ Открываем воспоминания...
             </div>
         </div>
+    </div>
+    <div id="story-start">
+        <h2>❤️ Наша история начинается... ❤️</h2>
     </div>
     <header>
         <h1>С годовщиной, любимая! ❤️</h1>
@@ -40,7 +52,7 @@
 
             <div class="slider-container">
                 <div class="slider">
-                    <img src="photo/photo1.jpg" alt="Наше фото 1" class="slide active">
+                    <img src="photo/photo1.jpg" alt="Наше фото 1" class="slide active first-photo">
                     <img src="photo/photo2.jpg" alt="Наше фото 2" class="slide">
                     <img src="photo/photo3.jpg" alt="Наше фото 3" class="slide">
                     <img src="photo/photo4.jpg" alt="Наше фото 4" class="slide">
@@ -49,6 +61,11 @@
                     <img src="photo/photo7.jpg" alt="Наше фото 7" class="slide">
                     <img src="photo/photo8.jpg" alt="Наше фото 8" class="slide">
                     <img src="photo/photo9.jpg" alt="Наше фото 9" class="slide">
+                    <img src="photo/photo10.jpg" alt="Наше фото 10" class="slide">
+                </div>
+                <div class="first-photo-overlay">
+                    <h3>Наши 2 года вместе ❤️</h3>
+                    <p>25.06.2024 — 25.06.2026</p>
                 </div>
                 <button id="prev-btn" class="slider-btn">❮</button>
                 <button id="next-btn" class="slider-btn">❯</button>
@@ -63,7 +80,7 @@
             <span class="bg-word word-17">Я тебя обожаю!</span>
             <span class="bg-word word-18">Ты мне нравишься!</span>
 
-            <h2>Наши локальные приколы 🤪</h2>
+            <h2>Наши локальные приколы 😁</h2>
             <p id="meme-text" style="font-weight: bold; color: #d1496a; min-height: 40px; margin-top: 20px; font-size: 1.3rem;"></p>
             <button id="meme-button">Нажми, чтобы вспомнить мем</button>
         </div>
