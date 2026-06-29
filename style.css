@@ -217,20 +217,72 @@ footer p {
     to   { opacity: 1; transform: translateY(0);    }
 }
 
-/* Контейнер для главных кнопок Назад/Вперед внизу */
 .slides-navigation {
     margin-top: 20px;
     display: flex;
-    gap: 20px;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.slides-nav-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.slides-navigation button {
+    background-color: #d1496a;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    padding: 0;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
     justify-content: center;
 }
 
-/* Сделаем нижние кнопки чуть-чуть отличающимися, например, серого цвета, чтобы не путать со стрелками фоток */
-.slides-navigation button {
-    background-color: #7d6870;
-}
 .slides-navigation button:hover {
-    background-color: #4a3b40;
+    background-color: #b33654;
+    transform: scale(1.1);
+}
+
+#page-indicator {
+    font-size: 0.88rem;
+    color: #a39298;
+    font-weight: 700;
+    min-width: 36px;
+    text-align: center;
+    user-select: none;
+}
+
+.slide-dots {
+    display: flex;
+    gap: 7px;
+    align-items: center;
+}
+
+.dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #f0d0d8;
+    cursor: pointer;
+    transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.dot:hover {
+    background: #e89aae;
+    transform: scale(1.25);
+}
+
+.dot.active-dot {
+    background: #d1496a;
+    width: 22px;
+    border-radius: 4px;
+    transform: none;
 }
 /* ================= СТИЛИ ДЛЯ СПОЙЛЕРОВ (СЛАЙД 3) ================= */
 
@@ -265,17 +317,19 @@ footer p {
 
 /* Скрытый контент спойлера */
 .spoiler-content {
-    display: none; /* По умолчанию скрыт */
-    padding: 5px 15px;
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 15px;
     background-color: #ffffff;
     border-left: 3px solid #d1496a;
     margin-top: -5px;
     border-radius: 0 0 8px 8px;
+    transition: max-height 0.45s ease, padding 0.3s ease;
 }
 
-/* Класс, который мы будем добавлять через JS, чтобы показать текст */
 .spoiler-item.open .spoiler-content {
-    display: block;
+    max-height: 650px;
+    padding: 12px 15px 16px;
 }
 /* Стиль для фоток внутри спойлеров */
 .spoiler-img {
@@ -1057,4 +1111,24 @@ footer {
     10%  { opacity: 0.5;                }
     90%  { opacity: 0.3;                }
     100% { bottom: 110vh; opacity: 0;   }
+}
+.spoiler-trigger::after {
+    content: '▾';
+    font-size: 1.15rem;
+    flex-shrink: 0;
+    display: inline-block;
+    transition: transform 0.35s ease;
+}
+
+.spoiler-item.open .spoiler-trigger::after {
+    transform: rotate(-180deg);
+}
+#meme-text {
+    font-weight: bold;
+    color: #d1496a;
+    min-height: 50px;
+    margin-top: 20px;
+    font-size: 1.3rem;
+    transition: opacity 0.22s ease, transform 0.22s ease;
+    display: block;
 }

@@ -60,7 +60,14 @@ memeButton.addEventListener('click', function() {
     const randomMeme = availableMemes[randomIndex];
     
     // Выводим его на экран
-    memeText.textContent = randomMeme;
+    memeText.style.opacity   = '0';
+    memeText.style.transform = 'translateY(8px)';
+
+    setTimeout(() => {
+        memeText.textContent     = randomMeme;
+        memeText.style.opacity   = '1';
+        memeText.style.transform = 'translateY(0)';
+    }, 220);
     
     // Магия: удаляем этот использованный мем из рабочей колоды, 
     // чтобы он больше не выпал, пока колода не опустеет полностью
@@ -108,15 +115,39 @@ const mainNextBtn = document.getElementById('main-next-btn');
 let currentGridPage = 0; // Номер текущего слайда (0 — первый, 1 — второй)
 
 function showAlbumPage(index) {
-    // Скрываем текущую страницу
     albumPages[currentGridPage].classList.remove('active-page');
-    
-    // Хитрый переход по кругу (если дошли до конца — кидает в начало)
     currentGridPage = (index + albumPages.length) % albumPages.length;
-    
-    // Показываем новую страницу
     albumPages[currentGridPage].classList.add('active-page');
+
+    updateDots(currentGridPage);
+    updatePageIndicator(currentGridPage);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
+// Точки-индикаторы
+const dotsContainer = document.querySelector('.slide-dots');
+
+function buildDots() {
+    albumPages.forEach((_, i) => {
+        const dot = document.createElement('span');
+        dot.classList.add('dot');
+        if (i === 0) dot.classList.add('active-dot');
+        dot.addEventListener('click', () => showAlbumPage(i));
+        dotsContainer.appendChild(dot);
+    });
+}
+
+function updateDots(activeIndex) {
+    document.querySelectorAll('.dot').forEach((dot, i) => {
+        dot.classList.toggle('active-dot', i === activeIndex);
+    });
+}
+
+function updatePageIndicator(activeIndex) {
+    const el = document.getElementById('page-indicator');
+    if (el) el.textContent = `${activeIndex + 1} / ${albumPages.length}`;
+}
+
+buildDots();
 
 // Вешаем события на нижние кнопки
 mainNextBtn.addEventListener('click', function() {
@@ -554,3 +585,27 @@ openAlbumBtn.addEventListener('click', () => {
 
     }, 1000);
 });
+// Свайпы на мобильном
+let touchStartX = 0;
+let touchStartY = 0;
+
+document.addEventListener('touchstart', e => {
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+}, { passive: true });
+
+document.addEventListener('touchend', e => {
+    const diffX = touchStartX - e.changedTouches[0].clientX;
+    const diffY = Math.abs(touchStartY - e.changedTouches[0].clientY);
+
+    // Срабатывает только если свайп горизонтальный (не прокрутка страницы)
+    if (Math.abs(diffX) > 60 && diffY < 80) {
+        if (diffX > 0) {
+            // Свайп влево → следующий слайд
+            showAlbumPage(currentGridPage + 1);
+        } else if (currentGridPage > 0) {
+            // Свайп вправо → предыдущий слайд
+            showAlbumPage(currentGridPage - 1);
+        }
+    }
+}, { passive: true });

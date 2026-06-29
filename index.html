@@ -81,7 +81,7 @@
             <span class="bg-word word-18">Ты мне нравишься!</span>
 
             <h2>Наши локальные приколы 😁</h2>
-            <p id="meme-text" style="font-weight: bold; color: #d1496a; min-height: 40px; margin-top: 20px; font-size: 1.3rem;"></p>
+            <p id="meme-text"></p>
             <button id="meme-button">Нажми, чтобы вспомнить мем</button>
         </div>
         <!-- СЛАЙД 3: Наша история в датах -->
@@ -103,7 +103,7 @@
                 <div class="spoiler-item">
                     <button class="spoiler-trigger">16.06.2024 — День первого общения 👋</button>
                     <div class="spoiler-content">
-                        <p>Нравилось, что ты сразу отвечала, сразу показывала интерес к общению. Правда пару раз спрашивал какой у тебя рост и забывал😅</p>
+                        <p>Нравилось, что ты сразу отвечала, сразу показывала интерес к общению. Правда, пару раз спрашивал какой у тебя рост и забывал😅</p>
                         <img src="photo/date1.jpg" alt="Первое общение" class="spoiler-img">
                     </div>
                 </div>
@@ -112,7 +112,7 @@
                 <div class="spoiler-item">
                     <button class="spoiler-trigger">06.07.2024 — Начало первая встреча 💘</button>
                     <div class="spoiler-content">
-                        <p>На нашей первой встрече, я безумно полюбил твои красивые глаза😍</p>
+                        <p>На нашей первой встрече я безумно полюбил твои красивые глаза😍</p>
                         <img src="photo/date2.jpg" alt="Первая встреча" class="spoiler-img">
                     </div>
                 </div>
@@ -121,7 +121,7 @@
                 <div class="spoiler-item">
                     <button class="spoiler-trigger">16.07.2024 — Начало отношений ❤️‍🔥</button>
                     <div class="spoiler-content">
-                        <p> Момент, когда время буквально остановилось. Сердце сильно колотилось в тот момент💋</p>
+                        <p> Момент, когда время буквально остановилось. Сердце сильно колотилось тогда💋</p>
                         <img src="photo/date3.jpg" alt="Начало отношений" class="spoiler-img">
                     </div>
                 </div>
@@ -259,8 +259,12 @@
     </main>
 
     <div class="slides-navigation">
-        <button id="main-prev-btn">❮ Назад</button>
-        <button id="main-next-btn">Вперед ❯</button>
+        <div class="slides-nav-row">
+            <button id="main-prev-btn">❮</button>
+            <span id="page-indicator">1 / 6</span>
+            <button id="main-next-btn">❯</button>
+        </div>
+        <div class="slide-dots"></div>
     </div>
 
     <footer>
