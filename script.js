@@ -94,6 +94,7 @@ function showSlide(index) {
     
     // Добавляем класс active новой фотке (показываем её)
     slides[currentSlide].classList.add('active');
+    updatePhotoDots(currentSlide);
 }
 
 // 3. Вешаем событие клика на кнопку "Вперед"
@@ -105,6 +106,27 @@ nextBtn.addEventListener('click', function() {
 prevBtn.addEventListener('click', function() {
     showSlide(currentSlide - 1);
 });
+// Точки под слайдером фото
+const photoDotsContainer = document.querySelector('.photo-dots');
+
+function buildPhotoDots() {
+    if (!photoDotsContainer) return;
+    slides.forEach((_, i) => {
+        const dot = document.createElement('span');
+        dot.classList.add('photo-dot');
+        if (i === 0) dot.classList.add('active-dot');
+        dot.addEventListener('click', () => showSlide(i));
+        photoDotsContainer.appendChild(dot);
+    });
+}
+
+function updatePhotoDots(activeIndex) {
+    document.querySelectorAll('.photo-dot').forEach((dot, i) => {
+        dot.classList.toggle('active-dot', i === activeIndex);
+    });
+}
+
+buildPhotoDots();
 // ================= ЛИСТАНИЕ СЛАЙДОВ АЛЬБОМА =================
 
 // Находим наши слайды-страницы и главные кнопки
@@ -585,6 +607,7 @@ openAlbumBtn.addEventListener('click', () => {
 
     }, 1000);
 });
+/*
 // Свайпы на мобильном
 let touchStartX = 0;
 let touchStartY = 0;
@@ -609,3 +632,4 @@ document.addEventListener('touchend', e => {
         }
     }
 }, { passive: true });
+*/

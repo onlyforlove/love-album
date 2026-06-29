@@ -18,9 +18,14 @@ body {
 /* 2. Настройки для главного заголовка */
 header h1 {
     font-family: 'Playfair Display', Georgia, serif;
-    color: #d1496a; /* Красивый малиновый цвет */
     font-size: 2.2rem;
     margin-bottom: 5px;
+
+    /* Градиентный текст */
+    background: linear-gradient(135deg, #e8637f 0%, #d1496a 50%, #b52b4c 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 header p {
@@ -96,27 +101,38 @@ footer p {
 
 /* Стиль для каждой отдельной плашки (день, час и т.д.) */
 .counter-item {
-    background-color: #fff0f3; /* Чуть розоватый фон для плашек */
-    padding: 10px;
-    border-radius: 12px;
-    flex: 1; /* Чтобы все плашки были одинаковой ширины */
+    background: linear-gradient(160deg, #fff8fa 0%, #ffe8ef 100%);
+    border: 1px solid #ffd0db;
+    box-shadow: 0 4px 12px rgba(209, 73, 106, 0.1);
+    padding: 12px 8px;
+    border-radius: 14px;
+    flex: 1;
+    transition: transform 0.2s ease;
+}
+
+.counter-item:hover {
+    transform: translateY(-3px);
 }
 
 /* Стиль для больших цифр */
 .counter-item span {
     font-size: 1.6rem;
-    font-weight: bold;
-    color: #d1496a;
+    font-weight: 800;
     display: block;
+    /* Градиентный текст как у заголовков */
+    background: linear-gradient(135deg, #e8637f 0%, #b52b4c 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 /* Стиль для подписей под цифрами */
 .counter-item p {
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     margin: 5px 0 0 0;
     color: #a39298;
-    text-transform: uppercase; /* Делает буквы заглавными */
-    letter-spacing: 1px; /* Раздвигает буквы для красоты */
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
 }
 /* Контейнер для слайдера */
 .slider-container {
@@ -866,8 +882,12 @@ footer p {
 .intro-content h1 {
     font-family: 'Playfair Display', Georgia, serif;
     font-size: 2.5rem;
-    color: #d1496a;
     margin-bottom: 15px;
+
+    background: linear-gradient(135deg, #e8637f 0%, #d1496a 50%, #b52b4c 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .intro-content p {
@@ -1000,6 +1020,8 @@ footer {
     transition:
         opacity 1.5s ease,
         transform 1.5s ease;
+    position: relative;
+    z-index: 1;         
 }
 
 .album-visible {
@@ -1131,4 +1153,54 @@ footer {
     font-size: 1.3rem;
     transition: opacity 0.22s ease, transform 0.22s ease;
     display: block;
+}
+.bg-hearts {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.bg-heart {
+    position: absolute;
+    bottom: -30px;
+    font-size: 1.2rem;
+    opacity: 0;
+    pointer-events: none;
+    animation: bgHeartFloat linear infinite;
+}
+
+@keyframes bgHeartFloat {
+    0%   { bottom: -30px; opacity: 0;    }
+    10%  { opacity: 0.2;                 }
+    90%  { opacity: 0.12;                }
+    100% { bottom: 110vh; opacity: 0;    }
+}
+.photo-dots {
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+    margin-top: 12px;
+}
+
+.photo-dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #f0d0d8;
+    cursor: pointer;
+    transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.photo-dot:hover {
+    background: #e89aae;
+    transform: scale(1.25);
+}
+
+.photo-dot.active-dot {
+    background: #d1496a;
+    width: 18px;
+    border-radius: 3px;
 }
